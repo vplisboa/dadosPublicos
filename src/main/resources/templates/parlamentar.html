@@ -18,6 +18,7 @@
     <div class="nav-wrapper">
         <a href="#" class="brand-logo">Informações Parlamentar</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="z-depth-1" ><a th:href="@{/}">Voltar</a></li>
         </ul>
     </div>
 </nav>
@@ -64,7 +65,7 @@
         <tr th:each="despesa : ${despesasDeputado}">
             <td th:text="${despesa.mes}" />
             <td th:text="${despesa.total}" />
-            <td><a th:href="@{/despesa(mes=${despesa.mes},id=${deputado.id})}">Mais Informações</a></td>
+            <td><a th:href="@{/despesa(mes=${despesa.mes},id=${deputado.id},foto=${foto},partido=${partido})}">Mais Informações</a></td>
         </tr>
     </tbody>
 </table>

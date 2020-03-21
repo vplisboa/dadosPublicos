@@ -88,9 +88,14 @@ public class ParlamentaresController {
     }
 
     @RequestMapping("/despesa")
-    public String informacoesDespesa(@RequestParam("mes") final String mes, @RequestParam("id") final Long id, Model model, HttpServletRequest request) {
+    public String informacoesDespesa(@RequestParam("mes") final String mes, @RequestParam("id") final Long id, Model model,
+                                     @RequestParam("foto") final String foto,@RequestParam("partido") final String partido) {
         List<Despesas> despesas = dadosPublicosAPI.despesasMes(mes,"DESC","dataDocumento",id.toString()).getDespesas();
+
         model.addAttribute("despesaMes",despesas);
+        model.addAttribute("partido",partido);
+        model.addAttribute("foto",foto);
+        model.addAttribute("id",id);
         return "despesas";
     }
 

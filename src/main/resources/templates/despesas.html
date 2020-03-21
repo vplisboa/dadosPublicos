@@ -17,7 +17,11 @@
 <script type="text/javascript" src="../static/js/materialize.min.js" th:href="@{/js/materialize.min.js}"></script>
 <nav>
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Despesas Parlamentar</a>
+        <a class="brand-logo">Despesas Parlamentar</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="z-depth-1 left-align"><a th:href="@{/}">Lista</a></li>
+            <li class="z-depth-1"><a th:href="@{/parlamentar(id=${id},partido=${partido},foto=${foto})}">Voltar</a></li>
+        </ul>
     </div>
 </nav>
 <div class="container">
