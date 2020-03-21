@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link href="../static/css/materialize.css" type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}"
+          media="screen,projection" />
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}"
+          media="screen,projection" />
+</head>
+<body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../static/js/materialize.min.js" th:href="@{/js/materialize.min.js}"></script>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Informações Parlamentar</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        </ul>
+    </div>
+</nav>
+<div class="container">
+<table border="1" class="striped responsive-table">
+    <tbody>
+    <tr>
+        <td><b>Foto</b></td>
+        <td><img th:src="${foto}" height="140px" width="140px"></td>
+    </tr>
+    <tr>
+        <td ><b>Nome</b></td>
+        <td th:text="${deputado.nomeCivil}" />
+    </tr>
+    <tr>
+        <td><b>Data Nascimento</b></td>
+        <td th:text="${deputado.dataNascimento}" />
+    </tr>
+    <tr>
+        <td><b>Sexo</b></td>
+        <td th:text="${deputado.sexo}" />
+    </tr>
+    <tr>
+        <td><b>Partido</b></td>
+        <th th:text="${partido}" />
+    </tr>
+    </tbody>
+</table>
+</div>
+<br>
+<br>
+<div class="container">
+<table border="1" class="striped responsive-table">
+    <thead>
+    <tr>
+        <td>Lista de despesas dos 2 últimos meses</td>
+    </tr>
+        <tr>
+            <td>Mês</td>
+            <td>Valor</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="despesa : ${despesasDeputado}">
+            <td th:text="${despesa.mes}" />
+            <td th:text="${despesa.total}" />
+            <td><a th:href="@{/despesa(mes=${despesa.mes},id=${deputado.id})}">Mais Informações</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
